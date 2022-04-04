@@ -99,7 +99,6 @@ sixthround = dict(zip(teams, values))
 
 
 results['Sixth Round'] = [sum(df.loc[i, j]*results.loc[j, 'Fifth Round']*results.loc[i, 'Fifth Round'] for j in sixthround[i]) for i in teams]
-print(results['Sixth Round'].sum())
 
 
 
