@@ -34,7 +34,7 @@ for i in range(len(teams)):
     if i % 4 < 2:
         values[i] = [teams[4*floor(i/4)+j] for j in range(2,4)]
     else:
-        values[i] = [teams[4*ceil(i/4)-j] for j in range(4,2)]
+        values[i] = [teams[4*ceil(i/4)-j] for j in range(4,2, -1)]
 
 secondround = dict(zip(teams, values))
 
@@ -47,7 +47,7 @@ for i in range(len(teams)):
     if i % 8 < 4:
         values[i] = [teams[8*floor(i/8)+j] for j in range(4,8)]
     else:
-        values[i] = [teams[8*ceil(i/8)+j] for j in range(8,4)]
+        values[i] = [teams[8*ceil(i/8)-j] for j in range(8,4, -1)]
 
 
 thirdround = dict(zip(teams, values))
@@ -61,7 +61,7 @@ for i in range(len(teams)):
     if i % 16 < 8:
         values[i] = [teams[16*floor(i/16)+j] for j in range(8,16)]
     else:
-        values[i] = [teams[16*ceil(i/16)+j] for j in range(16,8)]
+        values[i] = [teams[16*ceil(i/16)-j] for j in range(16,8, -1)]
         
 fourthround = dict(zip(teams, values))
 
@@ -74,7 +74,7 @@ for i in range(len(teams)):
     if i % 32 < 16:
         values[i] = [teams[32*floor(i/32)+j] for j in range(16,32)]
     else:
-        values[i] = [teams[32*ceil(i/32)+j] for j in range(32,16)]
+        values[i] = [teams[32*ceil(i/32)-j] for j in range(32,16, -1)]
 
 fifthround = dict(zip(teams, values))
 
@@ -87,7 +87,7 @@ for i in range(len(teams)):
     if i % 64 < 32:
         values[i] = [teams[64*floor(i/64)+j] for j in range(32,64)]
     else:
-        values[i] = [teams[64*ceil(i/64)+j] for j in range(64,32)]
+        values[i] = [teams[64*ceil(i/64)-j] for j in range(64,32, -1)]
 
 
 sixthround = dict(zip(teams, values))
@@ -187,7 +187,12 @@ m.addConstr(quicksum(x[i, 'Fifth Round'] for i in teams[32:64]) == 1)
 m.addConstr(quicksum(x[i, 'Sixth Round'] for i in teams) == 1)
 
 # Elimination Constraints
-# NEEDED:
+m.addConstrs(quicksum(x[i, k] for k in rounds[1:6]) <= 5*x[i, "First Round"] for i in teams)
+m.addConstrs(quicksum(x[i, k] for k in rounds[2:6]) <= 4*x[i, "Second Round"] for i in teams)
+m.addConstrs(quicksum(x[i, k] for k in rounds[3:6]) <= 3*x[i, "Third Round"] for i in teams)
+m.addConstrs(quicksum(x[i, k] for k in rounds[4:6]) <= 2*x[i, "Fourth Round"] for i in teams)
+m.addConstrs(quicksum(x[i, k] for k in rounds[5:6]) <= x[i, "Fifth Round"] for i in teams)
+
 
 
 #Run optimization and print results
@@ -195,6 +200,7 @@ m.optimize()
 
 for v in m.getVars():
    print("%s %g" % (v.varName, v.x))
+
 
 
 
