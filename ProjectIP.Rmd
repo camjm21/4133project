@@ -1,0 +1,42 @@
+---
+title: "ISYE 4133 March Madness IP1"
+author: "Nishu"
+date: "4/7/2022"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```  
+
+### Objective
+Maximize expected number of points awarded for each correct prediction.
+
+### Decision Variables
+$$
+x_{ik} = \begin{cases}
+1 & \text{if team i wins round k},\\ 
+0 & \text{o/w} \end{cases}\\
+$$  
+$$
+p_{ik}= \text{probability that team i wins round k }\\
+\forall i\in{[0,63]},\ k\in[1,65]
+$$
+
+## Integer Program
+$$
+\text{max }\sum^{63}_{i=0}p_{i1}x_{i1}\ +\ 2\sum^{63}_{i=0}p_{i2}x_{i2}\ +\ 4\sum^{63}_{i=0}p_{i3}x_{i3}\ +\ 8\sum^{63}_{i=0}p_{i4}x_{i4}\ +\ 16\sum^{63}_{i=0}p_{i5}x_{i5}\ +\ 32\sum^{63}_{i=0}p_{i6}x_{i6}\  
+$$  
+
+### s.t.
+$\sum_{i=0}^{63}x_{ik} = 2^{6-k}\ \ \forall\ k\in[1,6]\ \ \ \ \ \ \text{number of winners per round k}$  
+
+$\sum_{i=n}^6x_{ik}=(7-n)x_{i,n-1}\ \ \forall\ k\in[1,6], n\in[2,6]\ \ \ \ \ \ \text{cannot win future rounds if loss in previous round}$  
+
+
+
+
+
+
