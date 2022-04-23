@@ -1,7 +1,7 @@
 ---
-title: "ISYE 4133 March Madness IP1"
-author: "Nishu"
-date: "4/7/2022"
+title: "ISYE 4133 March Madness IP"
+author: "Anna, Carson, Cameron, Nishu"
+date: "4/24/2022"
 output:
   pdf_document: default
   word_document: default
@@ -12,31 +12,72 @@ knitr::opts_chunk$set(echo = TRUE)
 ```  
 
 ### Objective
-Maximize expected number of points awarded for each correct prediction.
+Maximize expected number of points awarded based off a team's win probability.
 
 ### Decision Variables
+Note: round k = 0 refers to round 1 and team i = 0 refers to team 1
 $$
 x_{ik} = \begin{cases}
 1 & \text{if team i wins round k},\\ 
-0 & \text{o/w} \end{cases}\\
+0 & \text{o/w} \end{cases}
 $$  
+
 $$
-p_{ik}= \text{probability that team i wins round k }\\
-\forall i\in{[0,63]},\ k\in[1,65]
-$$
+p_{ik}= \text{probability that team i wins round k },
+\forall\ i\in{[0,63]},\ k\in[0, 5]
+$$  
 
 ## Integer Program
 $$
-\text{max }\sum^{63}_{i=0}p_{i1}x_{i1}\ +\ 2\sum^{63}_{i=0}p_{i2}x_{i2}\ +\ 4\sum^{63}_{i=0}p_{i3}x_{i3}\ +\ 8\sum^{63}_{i=0}p_{i4}x_{i4}\ +\ 16\sum^{63}_{i=0}p_{i5}x_{i5}\ +\ 32\sum^{63}_{i=0}p_{i6}x_{i6}\  
+\text{max}\sum_{k = 0}^{5}(2^k\sum^{63}_{i=0}p_{ik}x_{ik}) 
 $$  
 
 ### s.t.
-$\sum_{i=0}^{63}x_{ik} = 2^{6-k}\ \ \forall\ k\in[1,6]\ \ \ \ \ \ \text{number of winners per round k}$  
+$$
+\sum_{k=n}^5x_{ik}=(6-n)x_{i,n-1}\ \ \forall\ i\in[0,63],\ n\in[1,5]\ \ \ \ \ \ \text{cannot win future rounds if loss in previous round}
+$$ 
+$$
+\sum_{a=0}^{1}x_{2p+a,\ 0}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 1}
+$$  
+$$
+\sum_{a=0}^{3}x_{2p+a,\ 1}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 2}
+$$  
+$$
+\sum_{a=0}^{7}x_{2p+a,\ 2}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 3}
+$$  
+$$
+\sum_{a=0}^{15}x_{2p+a,\ 3}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 4}
+$$  
+$$
+\sum_{a=0}^{31}x_{2p+a,\ 4}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 5}
+$$  
+$$
+\sum_{a=0}^{63}x_{2p+a,\ 5}=1\ \forall\ p\in[0,31]\ \text{only one winner per matchup in round 6}
+$$  
 
-$\sum_{i=n}^6x_{ik}=(7-n)x_{i,n-1}\ \ \forall\ k\in[1,6], n\in[2,6]\ \ \ \ \ \ \text{cannot win future rounds if loss in previous round}$  
+#### The following constraint is added for part e
+$$
+\sum_{i=0}^{63}x_{ik}=62\ \forall\ k \in[0,5]
+$$  
 
+#### The following constraints are added for part h
 
+##### Upset constraints
+$$
+x_{5,\ 0} + x_{21,\ 0} + x_{37,\ 0} + x_{53,\ 0} \ge 1
+$$  
+$$
+x_{9,\ 0} + x_{25,\ 0} + x_{41,\ 0} + x_{57,\ 0} \ge 1
+$$  
+$$
+x_{13,\ 0} + x_{29,\ 0} + x_{45,\ 0} + x_{61,\ 0} \ge 1
+$$  
+$$
+x_{3,\ 0} + x_{19,\ 0} + x_{35,\ 0} + x_{51,\ 0} \ge 2 
+$$  
 
-
-
+##### Upper seed limit
+$$
+x_{0,\ 3} + x_{16,\ 3} + x_{32,\ 3} + x_{48,\ 3} +\le3
+$$  
 
