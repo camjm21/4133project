@@ -1,3 +1,4 @@
+# PART A
 from re import T
 import pandas as pd
 import requests
@@ -103,6 +104,13 @@ sixthround = dict(zip(teams, values))
 
 # Put sixth round probabilities in
 results['Sixth Round'] = [sum(df.loc[i, j]*results.loc[j, 'Fifth Round']*results.loc[i, 'Fifth Round'] for j in sixthround[i]) for i in teams]
+
+
+
+
+
+# ****** PART C STARTS HERE *********
+
 
 
 
@@ -228,7 +236,11 @@ for i in teams:
         k+=1
 bracketScores.append(bracketScore)
 
-
+#
+#
+# ****** PART G STARTS HERE *********
+#
+#
 
 # Repeat 9 more times 
 for a in range(9):
