@@ -20,6 +20,9 @@ See: "PartA.py" and "Results-Dataframe.xlsx"
 ![Remaining 32 values from part A](Resultsxlsx2.png)
 
 
+\newpage
+
+
 
 
 ## Part B
