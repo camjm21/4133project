@@ -1,3 +1,4 @@
+# PART A
 import pandas as pd
 import requests
 import io
@@ -94,6 +95,10 @@ sixthround = dict(zip(teams, values))
 
 # Put sixth round probabilities in
 results['Sixth Round'] = [sum(df.loc[i, j]*results.loc[j, 'Fifth Round']*results.loc[i, 'Fifth Round'] for j in sixthround[i]) for i in teams]
+
+
+
+# ****** PART C STARTS HERE *********
 
 
 
