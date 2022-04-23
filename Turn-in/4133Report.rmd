@@ -68,6 +68,7 @@ See: "PartC.py"
 
 Objective Value: 97.337068321
 
+\newpage
 
 ## Part D
 
@@ -90,6 +91,7 @@ In this bracket, Iowa wins in the first round, instead of Cincinatti.
 
 The new bracket has an Objective Value of 97.326068321 and a 2019 comparison score of 79.
 
+\newpage
 
 ## Part G
 
