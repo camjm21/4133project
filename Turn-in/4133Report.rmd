@@ -99,6 +99,8 @@ See "PartG.py"
 
 We can see here that there are only minute differences in the brackets. It is usually the result of changing the outcome of a game in the Round of 64 that does not impact any of the big future games that score the most points for our objective. Even after changing our optimal solution 10 times, we only dropped .053 points off the objective value, indicating that there are a lot of games that can be changed and hardly affect the outcome.
 
+\newpage
+
 ## Part H
 
 See "PartH.py"
