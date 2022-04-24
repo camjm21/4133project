@@ -77,7 +77,7 @@ We would have scored **78 points**, when comparing our optimal solution to the 2
 ## Part E
 
 $$
-\sum_{i,k}x_{i,k} \le 62 \text{   with }x_{ik}\text{ from previous iteration's decision variables} 
+\sum_{i,k}x_{i,k} \le 62 \text{   with }x_{ik}\text{ as the previous iteration's decision variables equal to 1} 
 $$
 
 
