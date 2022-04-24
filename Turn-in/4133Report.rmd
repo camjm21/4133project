@@ -120,11 +120,11 @@ The second method also used historical data to create constraints. First seeds g
 Added Upset and 1 seed constraints:
 $$
 \begin{aligned}
-x_{5,\ 0} + x_{21,\ 0} + x_{37,\ 0} + x_{53,\ 0} \ge 1 \\
-x_{9,\ 0} + x_{25,\ 0} + x_{41,\ 0} + x_{57,\ 0} \ge 1 \\ 
-x_{13,\ 0} + x_{29,\ 0} + x_{45,\ 0} + x_{61,\ 0} \ge 1 \\ 
-x_{3,\ 0} + x_{19,\ 0} + x_{35,\ 0} + x_{51,\ 0} \ge 2 \\
-x_{0,4}+x_{15,4}+x_{31,4}+x_{47,4} \le 3 \\
+x_{5,\ 0} + x_{21,\ 0} + x_{37,\ 0} + x_{53,\ 0} &\ge 1 \ \ \ \ \  \text{guarantees an upset in first round between a 5 and 12 seed} \\
+x_{9,\ 0} + x_{25,\ 0} + x_{41,\ 0} + x_{57,\ 0} &\ge 1 \ \ \ \ \  \text{guarantees an upset in first round between a 6 and 11 seed} \\ 
+x_{13,\ 0} + x_{29,\ 0} + x_{45,\ 0} + x_{61,\ 0} &\ge 1 \ \ \ \ \  \text{guarantees an upset in first round between a 7 and 10 seed} \\ 
+x_{3,\ 0} + x_{19,\ 0} + x_{35,\ 0} + x_{51,\ 0} &\ge 2 \ \ \ \ \  \text{guarantees two upsets in first round between a 8 and 9 seed} \\
+x_{0,3}+x_{15,3}+x_{31,3}+x_{47,3} &\le 3 \ \ \ \ \  \text{guarantees that at most 3 1-seed teams make the Final Four} \\
 \end{aligned}
 $$  
 
