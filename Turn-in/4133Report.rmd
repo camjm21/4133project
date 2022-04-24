@@ -9,7 +9,7 @@ output:
 
 ## Part A
 
-See: "PartA.py" and "Results-Dataframe.xlsx"
+See: "PartA.py" and "PartAOutput.xlsx"
 
 ![First 32 values from part A](Resultsxlsx.png)
 
@@ -109,9 +109,13 @@ See "PartH.py"
 
 To diversify our brackets and increase the chance of having a bracket with a higher actual score, we employed two methods. 
 
-The first one focused on generating upsets. Upsets are very common in the first round, as a lower seed can sometimes shock a higher seed and win a game they weren't supposed to. We found some data describing the probability of upsets occurring, with a 50.7% chance for 9 vs. 8, 39.6% for 10 vs. 7, 37.5% for 11 vs. 6, and 35.4% for 12 vs. 5.Based off this information, we created 3 new constraints that guarantee that at least one 12 seed, 11 seed, and 10 seed upset their higher ranked opponents and also a constraint that guarantees at least two upset for the 9th seeds. This improved the average score of our bracket, with most of the brackets now reaching scores of 81 and one hitting 82. A table of scores is included in the presentation.
+The first one focused on generating upsets. Upsets are very common in the first round, as a lower seed can sometimes shock a higher seed and win a game they weren't supposed to. We found some data describing the probability of upsets occurring, with a 50.7% chance for 9 vs. 8, 39.6% for 10 vs. 7, 37.5% for 11 vs. 6, and 35.4% for 12 vs. 5.Based off this information, we created 3 new constraints that guarantee that at least one 12 seed, 11 seed, and 10 seed upset their higher ranked opponents and also a constraint that guarantees at least two upset for the 9th seeds. This improved the average score of our bracket, with most of the brackets now reaching scores of 81 and one hitting 82.
 
-The second method also used historical data to create constraints. First seeds generally do well, but they aren't guaranteed to make it to the championship. For example, there has only been one instance of all Final Four team seeds being a 1 seed. To account for this, we added a constraint stating that at most 3 1-seed teams can make the Final Four. This greatly improved the average scores of our brackets to around 87 with a high of 88. This constraint had great success in predicting brackets that were closer to the 2019 bracket. A table of scores is included in the presentation.
+![10 Best Optimal Solutions with the upset constraints](Ad-Hoc Constraint 1)
+
+The second method also used historical data to create constraints. First seeds generally do well, but they aren't guaranteed to make it to the championship. For example, there has only been one instance of all Final Four team seeds being a 1 seed. To account for this, we added a constraint stating that at most 3 1-seed teams can make the Final Four. This greatly improved the average scores of our brackets to around 87 with a high of 88. This constraint had great success in predicting brackets that were closer to the 2019 bracket. 
+
+![10 Best Optimal Solutions with the upset and 1 seed constraints](Ad-Hoc Constraint 2)
 
 Added Upset and 1 seed constraints:
 $$
