@@ -49,13 +49,13 @@ $$
 ### Constraints
 $$
 \begin{aligned}
-\sum_{k=n}^5x_{ik}=&(6-n)x_{i,n-1}\ \ \forall\ i\in[0,63], n\in[1,5]\ \ \ \ \ \text{cannot win future rounds if loss in previous round} \\
-\sum_{a=0}^1x_{2p+a,0}=&1 \ \ \ \ \forall p \in [0,31] \ \ \ \ \  \text{winners for Round of 64} \\
-\sum_{a=0}^3x_{4p+a,1}=&1 \ \ \ \ \forall p \in[0,15] \ \ \ \ \ \text{winners for Round of 32} \\
-\sum_{a=0}^7x_{8p+a,2}=&1 \ \ \ \ \forall p \in[0,7] \ \ \ \ \ \text{winners for Sweet Sixteen} \\
-\sum_{a=0}^{15}x_{16p+a,3}=&1 \ \ \ \ \forall p \in[0,3] \ \ \ \ \ \text{winners for Elite Eight} \\
-\sum_{a=0}^{31}x_{32p+a,4}=&1 \ \ \ \ \forall p \in[0,1] \ \ \ \ \ \text{winners for Final Four} \\
-\sum_{i=0}^{63}x_{i,5}=&1 \ \ \ \ \ \text{winners for Championship Game} \\
+\sum_{k=n}^5x_{ik} \le (6-n)x_{i,n-1}\ \ &\forall\ i\in[0,63], n\in[1,5]\ \ \ \ \ \text{cannot win future rounds if loss in previous round} \\
+\sum_{a=0}^1x_{2p+a,0}=1 \ \ \ \ &\forall p \in [0,31] \ \ \ \ \  \text{winners for Round of 64} \\
+\sum_{a=0}^3x_{4p+a,1}=1 \ \ \ \ &\forall p \in[0,15] \ \ \ \ \ \text{winners for Round of 32} \\
+\sum_{a=0}^7x_{8p+a,2}=1 \ \ \ \ &\forall p \in[0,7] \ \ \ \ \ \text{winners for Sweet Sixteen} \\
+\sum_{a=0}^{15}x_{16p+a,3}=1 \ \ \ \ &\forall p \in[0,3] \ \ \ \ \ \text{winners for Elite Eight} \\
+\sum_{a=0}^{31}x_{32p+a,4}=1 \ \ \ \ &\forall p \in[0,1] \ \ \ \ \ \text{winners for Final Four} \\
+\sum_{i=0}^{63}x_{i,5}=1 \ \ \ \ &\ \ \ \ \ \ \ \ \  \ \text{winners for Championship Game} \\
 \end{aligned}
 $$
 
